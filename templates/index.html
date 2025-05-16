@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>マムさんチャットボット</title>
+    <!-- ← CSS を読み込むコード（Flaskのルールでこれ） -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>マムさんやで。話しかけてええんやで</h1>
+
+    {% if end_conversation != True %}
+        <form method="post" action="/chat">
+            <input type="text" name="message" required>
+            <button type="submit">送信するなんだね</button>
+        </form>
+    {% else %}
+        <p>マムさんはどこかへ行ってしまったようなんだね…</p>
+    {% endif %}
+
+    {% if user_message %}
+        <h2>あなた：</h2>
+        <p>{{ user_message }}</p>
+
+        <h2>マムさん：</h2>
+        <p>{{ bot_reply }}</p>
+    {% endif %}
+</body>
+</html>
+
