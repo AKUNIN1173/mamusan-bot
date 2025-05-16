@@ -1,68 +1,85 @@
 body {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(45deg, #ff69b4, #00ffff, #ffff00);
-    animation: spinbg 20s linear infinite;
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+}
+
+.chat-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.chat-box {
+    margin-bottom: 15px;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 90%;
+}
+
+.message.user {
+    background-color: #dcf8c6;
+    text-align: right;
+    margin-left: auto;
+}
+
+.message.bot {
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+}
+
+.message.bot strong {
+    margin-right: 5px;
+}
+
+.message.system {
     text-align: center;
-    color: #222;
+    font-style: italic;
+    color: gray;
 }
 
-@keyframes spinbg {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
-}
-
-h1 {
-    font-size: 3em;
-    color: #fff;
-    text-shadow: 2px 2px #000;
-    transform: rotate(-3deg);
-    animation: bounce 1s infinite alternate;
-}
-
-@keyframes bounce {
-    from { transform: rotate(-3deg) scale(1); }
-    to { transform: rotate(3deg) scale(1.1); }
-}
-
-form {
-    margin-top: 30px;
+.input-form {
+    display: flex;
+    gap: 10px;
 }
 
 input[type="text"] {
-    padding: 15px;
-    width: 80%;
-    max-width: 400px;
-    border: 4px dotted #000;
-    border-radius: 12px;
-    background-color: #fffacd;
-    font-size: 1.2em;
-    transform: rotate(1deg);
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 button {
-    margin-top: 10px;
-    padding: 12px 24px;
-    font-size: 1.1em;
-    background-color: #ff4500;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00c853;
     color: white;
-    border: 3px dashed yellow;
-    border-radius: 20px;
-    animation: wiggle 0.5s infinite alternate;
     cursor: pointer;
 }
 
-@keyframes wiggle {
-    0% { transform: rotate(-2deg); }
-    100% { transform: rotate(2deg); }
+.tip {
+    background: #fff8c6;
+    padding: 10px;
+    border-radius: 8px;
+    font-style: italic;
+    margin-bottom: 15px;
+    border-left: 5px solid #ffeb3b;
 }
 
-p {
-    font-size: 1.4em;
-    margin-top: 20px;
-    background: #fff0f5;
-    border: 2px solid #ff69b4;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 15px;
-    transform: rotate(-1deg);
+.icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 8px;
 }

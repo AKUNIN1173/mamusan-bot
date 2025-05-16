@@ -2,29 +2,42 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>マムさんチャットボット</title>
-    <!-- ← CSS を読み込むコード（Flaskのルールでこれ） -->
+    <title>マムさんBOT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>マムさんやで。話しかけてええんやで</h1>
+    <div class="chat-container">
+        <h1>マムさんとおしゃべりしよう</h1>
 
-    {% if end_conversation != True %}
-        <form method="post" action="/chat">
-            <input type="text" name="message" required>
+        {% if tip %}
+        <p class="tip">💡 マムさんのひとこと：{{ tip }}</p>
+        {% endif %}
+
+        <div class="chat-box">
+            {% if user_message %}
+                <div class="message user">
+                    <strong>あなた：</strong> {{ user_message }}
+                </div>
+                <div class="message bot">
+                    <img src="{{ url_for('static', filename='mamusan.png') }}" alt="マムさん" class="icon">
+                    <strong>マムさん：</strong> {{ bot_reply }}
+                </div>
+            {% endif %}
+
+            {% if end_conversation %}
+                <div class="message system">
+                    マムさんはどこかへ行ってしまったようなんだね…😢
+                </div>
+            {% endif %}
+        </div>
+
+        {% if not end_conversation %}
+        <form method="POST" action="/chat" class="input-form">
+            <input type="text" name="message" placeholder="マムさんに話しかけてみよう" required>
             <button type="submit">送信するなんだね</button>
         </form>
-    {% else %}
-        <p>マムさんはどこかへ行ってしまったようなんだね…</p>
-    {% endif %}
-
-    {% if user_message %}
-        <h2>あなた：</h2>
-        <p>{{ user_message }}</p>
-
-        <h2>マムさん：</h2>
-        <p>{{ bot_reply }}</p>
-    {% endif %}
+        {% endif %}
+    </div>
 </body>
 </html>
-
