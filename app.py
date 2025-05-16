@@ -1,4 +1,4 @@
-rom flask import Flask, render_template, request
+from flask import Flask, render_template, request
 from openai import OpenAI
 import os
 
@@ -49,4 +49,5 @@ def chat():
     return render_template("index.html", user_message=user_message, bot_reply=bot_reply, end_conversation=False)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
+
