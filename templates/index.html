@@ -11,32 +11,31 @@
         <h1>マムさんとおしゃべりしよう</h1>
 
         {% if tip %}
-        <p class="tip">💡 マムさんのひとこと：{{ tip }}</p>
+            <p class="tip">💡 マムさんのひとこと：{{ tip }}</p>
         {% endif %}
 
         <div class="chat-box">
             {% if user_message %}
                 <div class="message user">
-                    <strong>あなた：</strong> {{ user_message }}
+                    <div class="bubble">{{ user_message }}</div>
                 </div>
                 <div class="message bot">
-                    <img src="{{ url_for('static', filename='mamusan.png') }}" alt="マムさん" class="icon">
-                    <strong>マムさん：</strong> {{ bot_reply }}
+                    <div class="bubble">{{ bot_reply }}</div>
                 </div>
             {% endif %}
 
             {% if end_conversation %}
-                <div class="message system">
-                    マムさんはどこかへ行ってしまったようなんだね…😢
+                <div class="message bot">
+                    <div class="bubble">マムさんはどこかへ行ってしまったようなんだね…😢</div>
                 </div>
             {% endif %}
         </div>
 
         {% if not end_conversation %}
-        <form method="POST" action="/chat" class="input-form">
-            <input type="text" name="message" placeholder="マムさんに話しかけてみよう" required>
-            <button type="submit">送信するなんだね</button>
-        </form>
+            <form method="POST" action="/chat" class="input-form">
+                <input type="text" name="message" placeholder="マムさんに話しかけてみよう" required>
+                <button type="submit">送信するなんだね</button>
+            </form>
         {% endif %}
     </div>
 </body>
