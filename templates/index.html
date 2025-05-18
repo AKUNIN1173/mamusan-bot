@@ -10,19 +10,18 @@
     <div class="chat-container">
         <h1>マムさんとおしゃべりしよう</h1>
 
-        {% if tip %}
-            <p class="tip">💡 マムさんのひとこと：{{ tip }}</p>
-        {% endif %}
-
         <div class="chat-box">
-            {% if user_message %}
-                <div class="message user">
-                    <div class="bubble">{{ user_message }}</div>
-                </div>
-                <div class="message bot">
-                    <div class="bubble">{{ bot_reply }}</div>
-                </div>
-            {% endif %}
+            {% for msg in chat_log %}
+                {% if msg.role == 'user' %}
+                    <div class="message user">
+                        <div class="bubble">あなた：{{ msg.content }}</div>
+                    </div>
+                {% elif msg.role == 'assistant' %}
+                    <div class="message bot">
+                        <div class="bubble">マムさん：{{ msg.content }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
 
             {% if end_conversation %}
                 <div class="message bot">
@@ -40,3 +39,4 @@
     </div>
 </body>
 </html>
+
